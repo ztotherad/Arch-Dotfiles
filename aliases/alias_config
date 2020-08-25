@@ -1,0 +1,39 @@
+#      ___          ___          ___          ___                     ___     
+#     /\  \        /\  \        /\__\        /\  \         ___       /\  \    
+#    /::\  \      /::\  \      /::|  |      /::\  \       /\  \     /::\  \   
+#   /:/\:\  \    /:/\:\  \    /:|:|  |     /:/\:\  \      \:\  \   /:/\:\  \  
+#  /:/  \:\  \  /:/  \:\  \  /:/|:|  |__  /::\~\:\  \     /::\__\ /:/  \:\  \ 
+# /:/__/ \:\__\/:/__/ \:\__\/:/ |:| /\__\/:/\:\ \:\__\ __/:/\/__//:/__/_\:\__\
+# \:\  \  \/__/\:\  \ /:/  /\/__|:|/:/  /\/__\:\ \/__//\/:/  /   \:\  /\ \/__/
+#  \:\  \       \:\  /:/  /     |:/:/  /      \:\__\  \::/__/     \:\ \:\__\  
+#   \:\  \       \:\/:/  /      |::/  /        \/__/   \:\__\      \:\/:/  /  
+#    \:\__\       \::/  /       /:/  /                  \/__/       \::/  /   
+#     \/__/        \/__/        \/__/                                \/__/     
+##############################################################################
+# The following require sublime text 3 developer (subl3)
+# If you prefer a different editor, substitute it in
+alias st='subl'							# sublime text
+alias sst='sudo subl'						# sublime text superuser
+# Edit Configs
+alias edtbash='st ~/.bashrc'           	# shortcut to change bash config
+alias edtzsh='st ~/.zshrc'           	# shortcut to change zsh config
+alias edtgrub='sst /etc/default/grub' # shortcut to change grub config
+# Alias Editing
+alias edtmain='st ~/.aliases/.alias_main'
+alias edtpacman='st ~/.aliases/.alias_pacman'
+alias edtconfig='st ~/.aliases/.alias_config'
+alias edtyoutube='st ~/.aliases/.alias_youtube'
+# For powerlevel10k colour picking
+alias colourmap='for i in {0..255}; do print -Pn "%K{$i}  %k%F{$i}${(l:3::0:)i}%f " ${${(M)$((i%6)):#3}:+$'\n'}; done'
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+alias edt="echo '
+			===============
+			 EDIT Configs
+			===============
+	edtmain		basic terminal aliases for navigation and info
+	edtpacman	update and install related (+ BTRFS and antivirus)
+	edtyoutube	youtube downloader related 
+	edtconfig	additional configs for sublime and config files
+'"

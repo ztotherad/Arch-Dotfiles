@@ -1,0 +1,93 @@
+#     ___          ___          ___          ___          ___          ___     
+#    /\  \        /\  \        /\  \        /\__\        /\  \        /\__\    
+#   /::\  \      /::\  \      /::\  \      /::|  |      /::\  \      /::|  |   
+#  /:/\:\  \    /:/\:\  \    /:/\:\  \    /:|:|  |     /:/\:\  \    /:|:|  |   
+# /::\~\:\  \  /::\~\:\  \  /:/  \:\  \  /:/|:|__|__  /::\~\:\  \  /:/|:|  |__ 
+#/:/\:\ \:\__\/:/\:\ \:\__\/:/__/ \:\__\/:/ |::::\__\/:/\:\ \:\__\/:/ |:| /\__\
+#\/__\:\/:/  /\/__\:\/:/  /\:\  \  \/__/\/__/~~/:/  /\/__\:\/:/  /\/__|:|/:/  /
+#     \::/  /      \::/  /  \:\  \            /:/  /      \::/  /     |:/:/  / 
+#      \/__/       /:/  /    \:\  \          /:/  /       /:/  /      |::/  /  
+#                 /:/  /      \:\__\        /:/  /       /:/  /       /:/  /   
+#                 \/__/        \/__/        \/__/        \/__/        \/__/    
+###############################################################################
+# simply use aur in place of yay
+alias aur='yay' 
+# update official apps
+alias pacup='sudo pacman -Syyuu'
+# update AUR apps
+alias aurup='yay -Syyu'
+# Full System Update & Scrub SubVolume & Balance Subvolume for Performance
+alias update='pacup && aurup && scrub && balance && virus-scan' 
+# Search Official Repositories
+alias pacs='pacman -Ss'
+# Install via pacman  
+alias install='yay -Syy'
+alias pacin='sudo pacman -Syy'
+# Remove any installed package + unshared dependencies  
+alias destroy='sudo pacman -Rns' 
+# Clears the cache of all old packages, keeps last 3
+alias clear-cache='paccache -rvk3'  
+# Lists all installed packages  
+alias pacapps='pacman -Qe'  
+alias aurapps='pacman -Qm'
+# Update Mirrorlist Manjaro/Arch
+alias fast-man='sudo pacman-mirrors --fasttrack'
+alias fast-arch='sudo reflector --latest 200 --protocol http --protocol https --sort rate --save /etc/pacman.d/mirrorlist'
+# Remove unused dependencies 
+# (only needed once, 'destroy' makes it unnecessary)
+alias orphan-crippler='plz pacman -Rns $(pacman -Qdtq)'
+## BTRFS Maintenenece ##
+alias scrub='sudo btrfs scrub start /'
+alias balance='sudo btrfs balance start -musage=50 -dusage=50 /'
+# ClamAV scan home
+alias virus-scan='sudo freshclam && clamscan -vr /home'
+alias long-virus-scan='sudo freshclam && clamscan -vr /'
+
+alias pachelp='echo "
+pachelp
+			=======================
+			Pacman terminal aliases
+			=======================
+			[usage <substitution>]
+	
+	pacs			search for app on official repositories
+					(use install command afterwards)
+					[pacs <app-name>]
+
+	aur/yay			install from Arch User Repository 
+					This lists options, use corresponding 
+					number to pick which to install 
+					Lowest # is closest match to app-name 
+					(no spaces allowed)
+					[aur <app-name>]
+
+	install			installs named app & dependencies from pacman or AUR
+					[install <app-name>]
+	pacin			installs named app & dependencies from official repositories only
+					[install <app-name>]
+	destroy			installs named app completely 
+					[destroy <app-name>]
+			
+	pacup			basic core system update
+					[pacup]
+	aurup			AUR apps update
+					[aurup] (preferably not before pacup)
+	update			full System update 
+					(updates pacman then aur sequentially)
+					[update] 
+ 	
+	pacapps			shows all installed apps from pacman  
+					[pacapps] >> all apps shown
+					[pacapps <app-name>] >> filters only app-name
+	aurapps			shows only installed apps from AUR
+					[aurapps] >> all apps from AUR
+					[aurapps <app-name>] >> filters only app-name
+
+	fast-man		changes download location to the fastest (Manjaro)
+	fast-arch		changes download location to the fastest (Arch)
+					[fast-man][fast-arch]
+	
+	clear-cache		clears all cached packages older than 3rd most recent  
+					[clear-cache] >> perform monthly
+	orphan-crippler		removes unnecessary dependencies
+"'
