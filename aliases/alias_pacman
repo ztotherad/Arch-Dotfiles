@@ -10,19 +10,22 @@
 #                 /:/  /      \:\__\        /:/  /       /:/  /       /:/  /   
 #                 \/__/        \/__/        \/__/        \/__/        \/__/    
 ###############################################################################
+# Update Mirrorlist
+alias fast-arch='sudo reflector --verbose --latest 100 --sort rate --save /etc/pacman.d/mirrorlist && echo "Mirrors Updated"'
 # simply use aur in place of yay
 alias aur='yay' 
 # update official apps
 alias pacup='sudo pacman -Syyuu'
 # update AUR apps
-alias aurup='yay -Syyu'
+alias aurup='yay -Syu'
 # Full System Update & Scrub SubVolume & Balance Subvolume for Performance
-alias update='pacup && aurup && scrub && balance && virus-scan' 
+alias full-update='fast-arch && pacup && aurup && scrub && balance && virus-scan' 
+
 # Search Official Repositories
 alias pacs='pacman -Ss'
-# Install via pacman  
-alias install='yay -Syy'
-alias pacin='sudo pacman -Syy'
+# Install application by name 
+alias install='yay -Sy --noconfirm'
+alias pacin='sudo pacman -Sy'
 # Remove any installed package + unshared dependencies  
 alias destroy='sudo pacman -Rns' 
 # Clears the cache of all old packages, keeps last 3
@@ -30,18 +33,10 @@ alias clear-cache='paccache -rvk3'
 # Lists all installed packages  
 alias pacapps='pacman -Qe'  
 alias aurapps='pacman -Qm'
-# Update Mirrorlist Manjaro/Arch
-alias fast-man='sudo pacman-mirrors --fasttrack'
-alias fast-arch='sudo reflector --latest 200 --protocol http --protocol https --sort rate --save /etc/pacman.d/mirrorlist'
+
 # Remove unused dependencies 
 # (only needed once, 'destroy' makes it unnecessary)
 alias orphan-crippler='plz pacman -Rns $(pacman -Qdtq)'
-## BTRFS Maintenenece ##
-alias scrub='sudo btrfs scrub start /'
-alias balance='sudo btrfs balance start -musage=50 -dusage=50 /'
-# ClamAV scan home
-alias virus-scan='sudo freshclam && clamscan -vr /home'
-alias long-virus-scan='sudo freshclam && clamscan -vr /'
 
 alias pachelp='echo "
 pachelp
@@ -72,9 +67,9 @@ pachelp
 					[pacup]
 	aurup			AUR apps update
 					[aurup] (preferably not before pacup)
-	update			full System update 
+	full-update		full System update with disk cleanup and antivirus scan
 					(updates pacman then aur sequentially)
-					[update] 
+					[full-update] 
  	
 	pacapps			shows all installed apps from pacman  
 					[pacapps] >> all apps shown
@@ -83,9 +78,8 @@ pachelp
 					[aurapps] >> all apps from AUR
 					[aurapps <app-name>] >> filters only app-name
 
-	fast-man		changes download location to the fastest (Manjaro)
-	fast-arch		changes download location to the fastest (Arch)
-					[fast-man][fast-arch]
+	fast-arch		changes download location to the fastest
+					[fast-arch]
 	
 	clear-cache		clears all cached packages older than 3rd most recent  
 					[clear-cache] >> perform monthly

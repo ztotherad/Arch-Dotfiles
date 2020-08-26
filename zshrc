@@ -11,17 +11,7 @@
 #   \:\__\      \::/  /      /:/  /      \  \:\      \  \::/   #
 # ■  \/__/       \/__/       \/__/        \__\/       \__\/    #
  ##############################################################
-
- ######################################################################
-#   ___      ___      ___      ___      ___      ___      ___      ___ #  
-#  /\  \    /\  \    /\  \    /\  \    /\  \    /\__\    /\  \    /\__\#  
-# /::\  \  /::\  \  _\:\  \  /::\  \  _\:\  \  /:| _|_  /::\  \  /:/  /#  
-#/:/\:\__\/::\:\__\/\/::\__\/:/\:\__\/\/::\__\/::|/\__\/::\:\__\/:/__/ #  
-#\:\/:/  /\;:::/  /\::/\/__/\:\:\/__/\::/\/__/\/|::/  /\/\::/  /\:\  \ #  
-# \::/  /  |:\/__/  \:\__\   \::/  /  \:\__\    |:/  /   /:/  /  \:\__\#  
-#  \/__/    \|__|    \/__/    \/__/    \/__/    \/__/    \/__/    \/__/#
-#                                                                      #  
- ######################################################################                 
+             
 ## Options section
 setopt correct            # Auto correct mistakes
 setopt extendedglob       # Extended globbing. Allows using regular expressions with *
@@ -174,9 +164,6 @@ export LESS=-r
 #    \/__/  \:\__\\::/  /  \::/  /  \:\__\    |:/  /  \::/  / #
 #            \/__/ \/__/    \/__/    \/__/    \/__/    \/__/  #
  #############################################################
-## Plugins section: Enable fish style features
-alias addplugins='aur -S --noconfirm bash-zsh-insulter zsh-autosuggestions zsh-completions zsh-history-substring-search zsh-lovers zsh-syntax-highlighting zsh-systemd-git zsh-theme-powerlevel10k zsh-you-should-use'
-
 # Use Autosuggestions 
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh
 # Use You-Should-Use
@@ -228,29 +215,13 @@ case $(basename "$(cat "/proc/$PPID/comm")") in
       ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=8'
     ;;
 esac
-
+##========================================##
+##=============== Insulter ===============##
 if [ -f /etc/bash.command-not-found ]; then
         . /etc/bash.command-not-found
 fi
-## Powerline ## Replaced by powerlevel10k
-#function powerline_precmd() {
-#    PS1="$(powerline-shell --shell zsh $?)"
-#}
-#
-#function install_powerline_precmd() {
-#  for s in "${precmd_functions[@]}"; do
-#    if [ "$s" = "powerline_precmd" ]; then
-#      return
-#    fi
-#  done
-#  precmd_functions+=(powerline_precmd)
-#}
-#
-#if [ "$TERM" != "linux" ]; then
-#    install_powerline_precmd
-#fi
-
-## Insulter ##
+##=============== Insulter ==============##
+##=======================================##
 
  ####################################################
 #     ___          ___          ___          ___     #
@@ -266,7 +237,7 @@ fi
 #    \/__/        \/__/        \/__/        \|__|    #
  ####################################################
 # 19/07/2020
-alias help='ythelp; mnhelp; pchelp'
+alias help='ythelp; mnhelp; pchelp; edt'
 alias a-zsh='source ~/.zshrc'
 alias a-main='source ~/.aliases/.alias_main'
 alias a-pac='source ~/.aliases/.alias_pacman'
@@ -276,7 +247,7 @@ alias pl10k='source ~/.p10k.zsh'
 # load all terminal aliases
 alias load='a-main && a-pac && a-ytb && a-cfg && pl10k' 
 # reload terminal 
-alias reload='zsh && echo "   ----Shell Reloaded----	"' 
+alias reload='zsh' 
 
 #################################################################
 #     ___          ___          ___                     ___     #

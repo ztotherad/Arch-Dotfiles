@@ -12,9 +12,10 @@
 ####################################################################################### 
 # Require youtube-dl to be installed
 # Download Video at highest quality up to 720 with mp4 format
-alias ytvid='youtube-dl -f 136 -o "%(title)s.%(ext)s" '
+alias ytvid='youtube-dl -f 136 -o "%(title)s.%(ext)s"'
+alias ytvid-hd='youtube-dl -f best -o "%(title)s.%(ext)s"'
 # Download Audio Only at highest quality with mp3 format
-alias ytmp3='youtube-dl --extract-audio --audio-format mp3 --add-metadata -o "%(title)s.%(ext)s" '
+alias ytmp3='youtube-dl --extract-audio --audio-format mp3 --add-metadata -o "%(title)s.%(ext)s"'
 
 alias ythelp='echo "
 ythelp
@@ -25,6 +26,12 @@ ythelp
 
 	ytvid 			download youtube video/playlist/channel as mp4@720p
 					[ytvid <video url>]
+	ytvid-hd		download youtube video/playlist/channel as mp4@1080p
+					[ytvid <video url>]
+									
 	ytmp3 			download youtube music as mp3 
 					[ytmp3 <video url>]
+					
+		*Works on most video sites			
+        *Note: youtube links with a / will need double quotes
 "'

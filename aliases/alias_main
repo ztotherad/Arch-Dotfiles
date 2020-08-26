@@ -35,9 +35,18 @@ alias cln='clear; neofetch'     # Displays basic system info after clearing
 alias matrix='cmatrix -as'		# Matrix screensaver
 alias kernel='uname -a'			# Kernel Version
 alias findip='ip route show'	# Current ip address
+
 # Requires Timeshift installed with a backup already set up
-alias restore='sudo timeshift --restore'	# quickly run a timeshift restore (from tty2)
+alias restore='sudo timeshift --restore'	# quickly run a timeshift restore from terminal
 alias backup='sudo timeshift --create'     	# create a new timeshift resore point
+
+## BTRFS Maintenenece ##
+alias scrub='sudo btrfs scrub start / && echo "Root Disk Scrubbed Successfully"'
+alias balance='sudo btrfs balance start -musage=50 -dusage=50 / echo "Sectors Balanced Successfully"'
+
+# ClamAV scan home
+alias virus-scan='echo "Home Folder Virus Scan";sudo freshclam && clamscan -vr /home && echo "Home Folder Virus Scan Complete"'
+alias long-virus-scan='echo "Virus Scanning Root Directory /n *This will take a long time"; sudo freshclam && clamscan -vr / && echo "Root Virus Scan Complete"'
 
 alias mnhelp=' echo "
 mnhelp
@@ -67,6 +76,12 @@ mnhelp
 					[restore]
 	backup			creates a new on-demand restore point 
 					[backup]
+
+	scrub			scrubs unused space on BTRFS, improves performance
+	balance			balances sectors with less than 50% space filled
+
+	virus-scan 		Scans Home Directory for Viruses
+	long-virus-scan	Scans Root Directory for Viruses
 
 			Usually unnecessary
 			===================
