@@ -1,29 +1,49 @@
-#      ___          ___          ___          ___                     ___     
-#     /\  \        /\  \        /\__\        /\  \         ___       /\  \    
-#    /::\  \      /::\  \      /::|  |      /::\  \       /\  \     /::\  \   
-#   /:/\:\  \    /:/\:\  \    /:|:|  |     /:/\:\  \      \:\  \   /:/\:\  \  
-#  /:/  \:\  \  /:/  \:\  \  /:/|:|  |__  /::\~\:\  \     /::\__\ /:/  \:\  \ 
-# /:/__/ \:\__\/:/__/ \:\__\/:/ |:| /\__\/:/\:\ \:\__\ __/:/\/__//:/__/_\:\__\
-# \:\  \  \/__/\:\  \ /:/  /\/__|:|/:/  /\/__\:\ \/__//\/:/  /   \:\  /\ \/__/
-#  \:\  \       \:\  /:/  /     |:/:/  /      \:\__\  \::/__/     \:\ \:\__\  
-#   \:\  \       \:\/:/  /      |::/  /        \/__/   \:\__\      \:\/:/  /  
-#    \:\__\       \::/  /       /:/  /                  \/__/       \::/  /   
-#     \/__/        \/__/        \/__/                                \/__/     
-##############################################################################
-##================##
-## Installlations ##
-##================##
-alias install-yay='git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si && cd ..'
+# 2020 / 08 / 30 #
+###############################################################################
+#      ___          ___          ___          ___                     ___     #
+#     /\  \        /\  \        /\__\        /\  \         ___       /\  \    #
+#    /::\  \      /::\  \      /::|  |      /::\  \       /\  \     /::\  \   #
+#   /:/\:\  \    /:/\:\  \    /:|:|  |     /:/\:\  \      \:\  \   /:/\:\  \  #
+#  /:/  \:\  \  /:/  \:\  \  /:/|:|  |__  /::\~\:\  \     /::\__\ /:/  \:\  \ #
+# /:/__/ \:\__\/:/__/ \:\__\/:/ |:| /\__\/:/\:\ \:\__\ __/:/\/__//:/__/_\:\__\#
+# \:\  \  \/__/\:\  \ /:/  /\/__|:|/:/  /\/__\:\ \/__//\/:/  /   \:\  /\ \/__/#
+#  \:\  \       \:\  /:/  /     |:/:/  /      \:\__\  \::/__/     \:\ \:\__\  #
+#   \:\  \       \:\/:/  /      |::/  /        \/__/   \:\__\      \:\/:/  /  #
+#    \:\__\       \::/  /       /:/  /                  \/__/       \::/  /   #
+#     \/__/        \/__/        \/__/                                \/__/    # 
+###############################################################################
+			##===============##
+			## Installations ##
+			##===============##
+		##=- Essential | Always Install -=##
+alias install-yay='git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si && cd .. && yay -Sy --noconfirm pfetch'
 alias install-st='curl -O https://download.sublimetext.com/sublimehq-pub.gpg && sudo pacman-key --add sublimehq-pub.gpg && sudo pacman-key --lsign-key 8A8F901A && rm sublimehq-pub.gpg && echo -e "\n[sublime-text]\nServer = https://download.sublimetext.com/arch/stable/x86_64" | sudo tee -a /etc/pacman.conf && sudo pacman -Sy sublime-text'
-alias install-apps='install brave latte-dock'
-alias install-ts='install timeshift timeshift-autosnap cronie'
-alias install-av='install clamav clamtk gufw'
-alias install-yt='install youtube-dl'
-
 alias install-zsh='install bash-zsh-insulter zsh-autosuggestions zsh-completions zsh-history-substring-search zsh-lovers zsh-syntax-highlighting zsh-systemd-git zsh-theme-powerlevel10k zsh-you-should-use'
-##================##
-## Installlations ##
-##================##
+
+		##=- Everyday Apps Groups -=##
+alias install-apps='install brave latte-dock gwenview qbittorrent rambox youtube-dl spectacle ark'	# Basic everyday apps 
+alias install-media='install celluloid netflix-qdesktop clementine'					# Media Players (video, Netflix, music)
+alias install-edit='install gimp handbrake kdenlive audacity obs-studio'				# Multimedia editors
+alias install-utils='install grub-customizer gnome-disk-utility gparted auto-cpufreq-git kvantum-qt5 stacer'	# Utility Apps
+alias install-mouse='install ckb-next'		# Driver and manager for Corsair Peripherals 
+
+		##=- Speciality Apps with dependencies -=##
+alias install-mega='install megasync dolphin-megasync-git'		# Megasync Cloud + Dolphin Integration
+alias install-ts='install timeshift timeshift-autosnap cronie'		# Timeshift, with autosnap & cronie
+alias install-av='install clamav clamtk gufw'				# Antivirus +GUI & firewall
+
+			##===============##
+			## Installations ##
+			##===============##
+########################################################################################################
+#   ___      ___      ___      ___         ___      ___      ___      ___      ___      ___      ___   #
+#  /\  \    /\  \    /\  \    /\  \       /\  \    /\  \    /\__\    /\  \    /\  \    /\  \    /\  \  #
+# /::\  \  /::\  \  _\:\  \   \:\  \     /::\  \  /::\  \  /:| _|_  /::\  \  _\:\  \  /::\  \  /::\  \ #
+#/::\:\__\/:/\:\__\/\/::\__\  /::\__\   /:/\:\__\/:/\:\__\/::|/\__\/::\:\__\/\/::\__\/:/\:\__\/\:\:\__\#
+#\:\:\/  /\:\/:/  /\::/\/__/ /:/\/__/   \:\ \/__/\:\/:/  /\/|::/  /\/\:\/__/\::/\/__/\:\:\/__/\:\:\/__/#
+# \:\/  /  \::/  /  \:\__\   \/__/       \:\__\   \::/  /   |:/  /    \/__/  \:\__\   \::/  /  \::/  / #
+#  \/__/    \/__/    \/__/                \/__/    \/__/    \/__/             \/__/    \/__/    \/__/  #
+########################################################################################################
 
 # The following require sublime text 3 developer (subl3)
 # If you prefer a different editor, substitute it in
@@ -38,10 +58,11 @@ alias edtmain='st ~/.aliases/.alias_main'
 alias edtpacman='st ~/.aliases/.alias_pacman'
 alias edtconfig='st ~/.aliases/.alias_config'
 alias edtyoutube='st ~/.aliases/.alias_youtube'
-# For powerlevel10k colour picking
-alias colourmap='for i in {0..255}; do print -Pn "%K{$i}  %k%F{$i}${(l:3::0:)i}%f " ${${(M)$((i%6)):#3}:+$'\n'}; done'
+
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+# For powerlevel10k colour picking
+alias colourmap='for i in {0..255}; do print -Pn "%K{$i}  %k%F{$i}${(l:3::0:)i}%f " ${${(M)$((i%6)):#3}:+$'\n'}; done'
 
 alias setup="echo '
 			============
@@ -50,7 +71,7 @@ alias setup="echo '
 
 	install-yay		Adds AUR support
 	install-st		Add sublime-text repository
-	install-apps	brave latte-dock
+	install-apps		brave latte-dock
 	install-ts		timeshift timeshift-autosnap cronie
 	install-av		clamav clamtk gufw
 	install-yt		youtube-dl
