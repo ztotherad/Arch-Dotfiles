@@ -1,4 +1,4 @@
-# 2020 / 08 / 30 #
+# 2020 / 08 / 31 #
 ###############################################################################
 #      ___          ___          ___          ___                     ___     #
 #     /\  \        /\  \        /\__\        /\  \         ___       /\  \    #
@@ -66,20 +66,31 @@ alias edtyoutube='st ~/.aliases/.alias_youtube'
 alias colourmap='for i in {0..255}; do print -Pn "%K{$i}  %k%F{$i}${(l:3::0:)i}%f " ${${(M)$((i%6)):#3}:+$'\n'}; done'
 
 alias setup="echo '
+setup
 			============
 			 Installers
 			============
+		##=- Essential | Always Install -=##
+install-yay		AUR support
+install-st  		Sublime Text Editor
+install-zsh		installs all needed zsh plugins from AUR
 
-	install-yay		Adds AUR support
-	install-st		Add sublime-text repository
-	install-apps		brave latte-dock
-	install-ts		timeshift timeshift-autosnap cronie
-	install-av		clamav clamtk gufw
-	install-yt		youtube-dl
-	install-zsh		zsh plugins
+		##=- Everyday Apps Groups -=##
+install-apps		brave latte-dock gwenview qbittorrent rambox youtube-dl spectacle ark lexend-fonts-git kcalc ktimer
+install-utils		grub-customizer gnome-disk-utility gparted auto-cpufreq-git kvantum-qt5 stacer krename
+install-edit		gimp audacity kid3 obs-studio kdenlive handbrake
+install-media		celluloid netflix-qdesktop clementine
+install-mouse		ckb-next 	# only for corsair peripherals
+
+		##=- Speciality Apps with dependencies -=##
+install-mega		megasync dolphin-megasync-git'	# Megasync Cloud + Dolphin Integration
+install-ts		timeshift timeshift-autosnap cronie'	# Timeshift, with autosnap & cronie
+install-av		clamav clamtk gufw'		# Antivirus +GUI & firewall
+install-dev		kdevelop kdevelop-python kdevelop-php umbrello kimagemapeditor'	# Development tools
 '"
 
 alias edt="echo '
+edt
 			===============
 			 EDIT Configs
 			===============
